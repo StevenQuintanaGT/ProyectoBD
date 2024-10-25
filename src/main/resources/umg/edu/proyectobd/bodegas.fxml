@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Pos?>
+
+<GridPane xmlns:fx="http://javafx.com/fxml" fx:controller="umg.edu.proyectobd.Controllers.BodegasController" alignment="CENTER" stylesheets="@styles.css">
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+    <hgap>10</hgap>
+    <vgap>10</vgap>
+
+    <Label text="Bodega ID:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+    <TextField fx:id="campoBodegaID" GridPane.rowIndex="0" GridPane.columnIndex="1" editable="false"/>
+
+    <Label text="Nombre:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+    <TextField fx:id="campoNombre" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+    <Label text="Ubicación:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+    <TextField fx:id="campoUbicacion" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+    <Label text="Municipio ID:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+    <TextField fx:id="campoMunicipioID" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+    <Button text="Buscar" onAction="#handleSearchBodega" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+    <Button text="Actualizar" onAction="#handleUpdateBodega" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+    <Button text="Eliminar" onAction="#handleDeleteBodega" GridPane.rowIndex="4" GridPane.columnIndex="2"/>
+
+    <HBox spacing="10" alignment="CENTER" GridPane.rowIndex="5" GridPane.columnIndex="0" GridPane.columnSpan="2">
+        <Button text="Agregar Bodega" onAction="#handleAddBodega"/>
+        <Button text="Regresar al Menú Principal" onAction="#handleReturnToMenu"/>
+    </HBox>
+</GridPane>

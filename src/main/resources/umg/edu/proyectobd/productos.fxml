@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Pos?>
+
+<GridPane xmlns:fx="http://javafx.com/fxml" fx:controller="umg.edu.proyectobd.Controllers.ProductController" alignment="CENTER" stylesheets="@styles.css">
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+    <hgap>10</hgap>
+    <vgap>10</vgap>
+
+    <Label text="SKU:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+    <TextField fx:id="campoSku" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+    <Button text="Buscar" onAction="#handleSearchProduct" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+
+    <Label text="Nombre:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+    <TextField fx:id="campoNombre" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+    <Label text="Descripción:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+    <TextField fx:id="campoDescripcion" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+    <Label text="Tipo:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+    <ComboBox fx:id="comboBoxTipo" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+    <Label text="Categoría:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+    <ComboBox fx:id="comboBoxCategoria" editable="true" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+
+    <Label text="Unidad de Medida:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+    <ComboBox fx:id="comboBoxUnidadMedida" editable="true" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+
+    <Label text="Costo Unitario:" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+    <TextField fx:id="campoCostoUnitario" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+
+    <Label text="Descuento:" GridPane.rowIndex="7" GridPane.columnIndex="0"/>
+    <TextField fx:id="campoDescuento" GridPane.rowIndex="7" GridPane.columnIndex="1"/>
+
+    <Label text="Imagen:" GridPane.rowIndex="8" GridPane.columnIndex="0"/>
+    <TextField fx:id="campoImagen" GridPane.rowIndex="8" GridPane.columnIndex="1"/>
+    <Button text="Seleccionar Imagen" onAction="#handleSelectImage" GridPane.rowIndex="8" GridPane.columnIndex="2"/>
+
+    <Label text="Peso:" GridPane.rowIndex="9" GridPane.columnIndex="0"/>
+    <TextField fx:id="campoPeso" GridPane.rowIndex="9" GridPane.columnIndex="1"/>
+
+    <Label text="Bodega:" GridPane.rowIndex="10" GridPane.columnIndex="0"/>
+    <ComboBox fx:id="comboBoxBodega" GridPane.rowIndex="10" GridPane.columnIndex="1"/>
+
+    <!-- New fields for provider, supply date, and quantity -->
+    <Label text="Proveedor:" GridPane.rowIndex="11" GridPane.columnIndex="0"/>
+    <ComboBox fx:id="comboProveedor" GridPane.rowIndex="11" GridPane.columnIndex="1"/>
+
+    <Label text="Fecha de Suministro:" GridPane.rowIndex="12" GridPane.columnIndex="0"/>
+    <DatePicker fx:id="fechaSuministro" GridPane.rowIndex="12" GridPane.columnIndex="1"/>
+
+    <Label text="Cantidad:" GridPane.rowIndex="13" GridPane.columnIndex="0"/>
+    <TextField fx:id="campoCantidad" GridPane.rowIndex="13" GridPane.columnIndex="1"/>
+
+    <HBox spacing="10" alignment="CENTER" GridPane.rowIndex="14" GridPane.columnIndex="0" GridPane.columnSpan="2">
+        <Button text="Agregar Producto" onAction="#handleAddProduct"/>
+        <Button text="Actualizar Producto" onAction="#handleUpdateProduct"/>
+        <Button text="Eliminar Producto" onAction="#handleDeleteProduct"/>
+        <Button text="Regresar al Menú Principal" onAction="#handleReturnToMenu"/>
+    </HBox>
+</GridPane>

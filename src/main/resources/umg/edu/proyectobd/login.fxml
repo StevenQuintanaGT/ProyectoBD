@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Button?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="umg.edu.proyectobd.Controllers.LoginController" alignment="CENTER" spacing="10" stylesheets="@styles.css">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+    <Label text="Login" style="-fx-font-size: 24px;"/>
+    <TextField fx:id="usernameField" promptText="Username" styleClass="input-field"/>
+    <PasswordField fx:id="passwordField" promptText="Password" styleClass="input-field"/>
+    <Button text="Login" onAction="#handleLogin"/>
+</VBox>

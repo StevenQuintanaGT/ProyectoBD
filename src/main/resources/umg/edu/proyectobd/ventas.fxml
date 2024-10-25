@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Pos?>
+
+<GridPane xmlns:fx="http://javafx.com/fxml" fx:controller="umg.edu.proyectobd.Controllers.VentasController" alignment="CENTER" stylesheets="@styles.css">
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+    <hgap>10</hgap>
+    <vgap>10</vgap>
+
+    <Label text="Cliente:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+    <ComboBox fx:id="comboCliente" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+    <Label text="Fecha de Venta:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+    <TextField fx:id="campoFechaVenta" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+    <Label text="Producto:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+    <ComboBox fx:id="comboProducto" onAction="#handleProductoSeleccionado" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+    <Label text="Cantidad:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+    <TextField fx:id="campoCantidad" onKeyReleased="#handleCantidadChanged" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+
+    <Label text="Precio Unitario:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+    <TextField fx:id="campoPrecioUnitario" GridPane.rowIndex="5" GridPane.columnIndex="1" editable="false"/>
+
+    <Label text="Total:" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+    <TextField fx:id="campoTotal" GridPane.rowIndex="6" GridPane.columnIndex="1" editable="false"/>
+
+    <HBox spacing="10" alignment="CENTER" GridPane.rowIndex="7" GridPane.columnIndex="0" GridPane.columnSpan="2">
+        <Button text="Agregar Venta" onAction="#handleAddVenta"/>
+        <Button text="Regresar al Menú Principal" onAction="#handleReturnToMenu"/>
+    </HBox>
+</GridPane>

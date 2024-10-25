@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Pos?>
+
+<GridPane xmlns:fx="http://javafx.com/fxml" fx:controller="umg.edu.proyectobd.Controllers.ProveedoresController" alignment="CENTER" stylesheets="@styles.css">
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+    <hgap>10</hgap>
+    <vgap>10</vgap>
+
+    <Label text="Nombre:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+    <TextField fx:id="campoNombre" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+    <Label text="Contacto:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+    <TextField fx:id="campoContacto" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+    <Label text="Teléfono:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+    <TextField fx:id="campoTelefono" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+    <Label text="Email:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+    <TextField fx:id="campoEmail" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+    <Button text="Buscar" onAction="#handleSearchProveedor" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+    <Button text="Actualizar" onAction="#handleUpdateProveedor" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+    <Button text="Eliminar" onAction="#handleDeleteProveedor" GridPane.rowIndex="4" GridPane.columnIndex="2"/>
+
+    <HBox spacing="10" alignment="CENTER" GridPane.rowIndex="5" GridPane.columnIndex="0" GridPane.columnSpan="2">
+        <Button text="Agregar Proveedor" onAction="#handleAddProveedor"/>
+        <Button text="Regresar al Menú Principal" onAction="#handleReturnToMenu"/>
+    </HBox>
+</GridPane>
