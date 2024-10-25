@@ -20,6 +20,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -42,11 +43,12 @@ public class VentasController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        populateClientes();
-        populateProductos();
+        loadClientes();
+        loadProductos();
+        campoFechaVenta.setText(LocalDate.now().toString());
     }
 
-    private void populateClientes() {
+    private void loadClientes() {
         ObservableList<String> clientes = FXCollections.observableArrayList();
         try (Connection connection = DatabaseConnection.getConnection()) {
             String query = "SELECT ClienteID, Cliente_Nombre FROM dbo.Cliente";
@@ -62,7 +64,7 @@ public class VentasController implements Initializable {
         comboCliente.setItems(clientes);
     }
 
-    private void populateProductos() {
+    private void loadProductos() {
         ObservableList<String> productos = FXCollections.observableArrayList();
         try (Connection connection = DatabaseConnection.getConnection()) {
             String query = "SELECT ProductoID, Producto_Nombre FROM dbo.Producto";
@@ -79,17 +81,26 @@ public class VentasController implements Initializable {
     }
 
     @FXML
+    private void handleCantidadChanged() {
+        calculateTotal();
+    }
+
+    @FXML
     private void handleProductoSeleccionado() {
         String producto = comboProducto.getValue();
         if (producto != null && !producto.isEmpty()) {
             int productoID = Integer.parseInt(producto.split(" - ")[0]);
             try (Connection connection = DatabaseConnection.getConnection()) {
-                String query = "SELECT Producto_CostoUnitario FROM dbo.Producto WHERE ProductoID = ?";
+                String query = "SELECT Producto_CostoUnitario, Producto_Descuento FROM dbo.Producto WHERE ProductoID = ?";
                 try (PreparedStatement stmt = connection.prepareStatement(query)) {
                     stmt.setInt(1, productoID);
                     ResultSet resultSet = stmt.executeQuery();
                     if (resultSet.next()) {
-                        campoPrecioUnitario.setText(resultSet.getBigDecimal("Producto_CostoUnitario").toString());
+                        BigDecimal costoUnitario = resultSet.getBigDecimal("Producto_CostoUnitario");
+                        BigDecimal descuento = resultSet.getBigDecimal("Producto_Descuento");
+                        BigDecimal precioConAumento = costoUnitario.multiply(BigDecimal.valueOf(1.20));
+                        BigDecimal precioFinal = precioConAumento.subtract(descuento);
+                        campoPrecioUnitario.setText(precioFinal.toString());
                         calculateTotal();
                     }
                 }
@@ -97,11 +108,6 @@ public class VentasController implements Initializable {
                 e.printStackTrace();
             }
         }
-    }
-
-    @FXML
-    private void handleCantidadChanged() {
-        calculateTotal();
     }
 
     private void calculateTotal() {
@@ -135,7 +141,7 @@ public class VentasController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Warning");
             alert.setHeaderText(null);
-            alert.setContentText("Please fill in all required fields.");
+            alert.setContentText("Porfavor llene todos los campos requeridos.");
             alert.showAndWait();
             return;
         }
@@ -172,7 +178,7 @@ public class VentasController implements Initializable {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Success");
                 alert.setHeaderText(null);
-                alert.setContentText("Venta and DetalleVenta added successfully!");
+                alert.setContentText("Venta agregada exitosamente!");
                 alert.showAndWait();
 
                 // Clear all fields
@@ -192,17 +198,17 @@ public class VentasController implements Initializable {
         }
     }
 
-@FXML
-private void handleReturnToMenu() {
-    try {
-        Stage currentStage = (Stage) campoFechaVenta.getScene().getWindow(); // Use an existing field
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/umg/edu/proyectobd/main_menu.fxml")));
-        Stage newStage = new Stage();
-        newStage.setScene(new Scene(root));
-        newStage.show();
-        currentStage.close();
-    } catch (IOException e) {
-        e.printStackTrace();
+    @FXML
+    private void handleReturnToMenu() {
+        try {
+            Stage currentStage = (Stage) campoFechaVenta.getScene().getWindow(); // Use an existing field
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/umg/edu/proyectobd/main_menu.fxml")));
+            Stage newStage = new Stage();
+            newStage.setScene(new Scene(root));
+            newStage.show();
+            currentStage.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
-}
 }

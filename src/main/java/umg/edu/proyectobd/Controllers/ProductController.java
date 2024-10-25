@@ -62,7 +62,7 @@ public class ProductController implements Initializable {
         loadCategorias();
         loadUnidadesMedida();
         loadBodegas();
-        populateProveedores();
+        loadProveedores();
         fechaSuministro.setValue(LocalDate.now());
     }
 
@@ -123,7 +123,7 @@ public class ProductController implements Initializable {
         }
     }
 
-    private void populateProveedores() {
+    private void loadProveedores() {
         ObservableList<String> proveedores = FXCollections.observableArrayList();
         try (Connection connection = DatabaseConnection.getConnection()) {
             String query = "SELECT ProveedorID, Proveedor_Nombre FROM dbo.Proveedor";

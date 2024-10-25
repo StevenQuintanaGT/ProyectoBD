@@ -5,15 +5,15 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Button?>
 
-<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="umg.edu.proyectobd.Controllers.MainMenuController" alignment="CENTER" spacing="10" stylesheets="@styles.css">
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="umg.edu.proyectobd.Controllers.MainMenuController" alignment="CENTER" spacing="20" stylesheets="@styles.css">
     <padding>
         <Insets top="20" right="20" bottom="20" left="20"/>
     </padding>
-    <Label text="Inventarios" style="-fx-font-size: 24px;"/>
-    <Button text="Productos" onAction="#handleProductos"/>
-    <Button text="Bodegas" onAction="#handleBodegas"/>
-    <Button text="Clientes" onAction="#handleClientes"/>
-    <Button text="Proveedores" onAction="#handleProveedores"/>
-    <Button text="Ventas" onAction="#handleVentas"/>
-    <Button text="Generar Reportes" onAction="#handleGenerarReportes"/>
+    <Label text="Inventario" style="-fx-font-size: 24px;"/>
+    <Button text="Productos" onAction="#handleProductos" maxWidth="Infinity" maxHeight="Infinity"/>
+    <Button text="Bodegas" onAction="#handleBodegas" maxWidth="Infinity" maxHeight="Infinity"/>
+    <Button text="Clientes" onAction="#handleClientes" maxWidth="Infinity" maxHeight="Infinity"/>
+    <Button text="Proveedores" onAction="#handleProveedores" maxWidth="Infinity" maxHeight="Infinity"/>
+    <Button text="Ventas" onAction="#handleVentas" maxWidth="Infinity" maxHeight="Infinity"/>
+    <Button text="Generar Reportes" onAction="#handleGenerarReportes" maxWidth="Infinity" maxHeight="Infinity"/>
 </VBox>

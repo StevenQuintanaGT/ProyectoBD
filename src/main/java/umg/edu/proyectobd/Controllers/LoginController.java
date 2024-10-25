@@ -40,7 +40,7 @@ public class LoginController {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
-            alert.setContentText("Usuario o contraseña incorrectos.");
+            alert.setContentText("Usuario o 2 incorrectos.");
             alert.showAndWait();
         }
     }
