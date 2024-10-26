@@ -130,7 +130,7 @@ public class ProductController implements Initializable {
             try (PreparedStatement stmt = connection.prepareStatement(query)) {
                 ResultSet resultSet = stmt.executeQuery();
                 while (resultSet.next()) {
-                    proveedores.add(resultSet.getInt("ProveedorID") + resultSet.getString("Proveedor_Nombre"));
+                    proveedores.add(resultSet.getString("Proveedor_Nombre"));
                 }
             }
         } catch (SQLException e) {
