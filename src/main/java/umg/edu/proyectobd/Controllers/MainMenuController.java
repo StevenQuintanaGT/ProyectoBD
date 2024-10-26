@@ -116,9 +116,9 @@ public class MainMenuController {
              Statement stmt = connection.createStatement();
              ResultSet rs = stmt.executeQuery("SELECT p.Producto_SKU, p.Producto_Nombre, p.Producto_Descripcion, t.Tipo_Nombre, p.Producto_CostoUnitario, p.Producto_Cantidad, c.Categoria_Nombre, b.Bodega_Nombre " +
                      "FROM Producto p " +
-                     "JOIN Tipo t ON p.TipoID = t.TipoID " +
-                     "JOIN Categoria c ON p.CategoriaID = c.CategoriaID " +
-                     "JOIN Bodega b ON p.BodegaID = b.BodegaID")) {
+                     "INNER JOIN Tipo t ON p.TipoID = t.TipoID " +
+                     "INNER JOIN Categoria c ON p.CategoriaID = c.CategoriaID " +
+                     "INNER JOIN Bodega b ON p.BodegaID = b.BodegaID")) {
 
             while (rs.next()) {
                 table.addCell(rs.getString("Producto_SKU"));
@@ -153,8 +153,8 @@ public class MainMenuController {
              Statement stmt = connection.createStatement();
              ResultSet rs = stmt.executeQuery("SELECT v.VentaID, c.Cliente_Nombre, v.Venta_FechaVenta, v.Venta_Total, dv.DetalleVenta_Cantidad, dv.DetalleVenta_PrecioUnitario " +
                      "FROM Venta v " +
-                     "JOIN Cliente c ON v.ClienteID = c.ClienteID " +
-                     "JOIN DetalleVenta dv ON v.VentaID = dv.VentaID")) {
+                     "INNER JOIN Cliente c ON v.ClienteID = c.ClienteID " +
+                     "INNER JOIN DetalleVenta dv ON v.VentaID = dv.VentaID")) {
 
             while (rs.next()) {
                 table.addCell(rs.getString("VentaID"));
