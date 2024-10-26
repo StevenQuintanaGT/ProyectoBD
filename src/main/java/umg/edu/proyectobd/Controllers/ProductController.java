@@ -130,7 +130,7 @@ public class ProductController implements Initializable {
             try (PreparedStatement stmt = connection.prepareStatement(query)) {
                 ResultSet resultSet = stmt.executeQuery();
                 while (resultSet.next()) {
-                    proveedores.add(resultSet.getInt("ProveedorID") + " - " + resultSet.getString("Proveedor_Nombre"));
+                    proveedores.add(resultSet.getInt("ProveedorID") + resultSet.getString("Proveedor_Nombre"));
                 }
             }
         } catch (SQLException e) {
@@ -188,8 +188,7 @@ private void handleAddProduct() {
         connection.setAutoCommit(false);
 
         int categoriaID = getCategoriaID(categoria);
-        String proveedorNombre = proveedor.split(" - ")[1]; // Extract the name part
-        int proveedorID = getProveedorID(proveedorNombre);
+        int proveedorID = getProveedorID(proveedor);
 
         String insertProductoQuery = "INSERT INTO dbo.Producto (Producto_SKU, Producto_Nombre, Producto_Descripcion, TipoID, CategoriaID, UnidadMedidaID, Producto_CostoUnitario, Producto_Descuento, Producto_Imagen, Producto_Peso, BodegaID, Producto_Cantidad) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try (PreparedStatement insertProductoStmt = connection.prepareStatement(insertProductoQuery, Statement.RETURN_GENERATED_KEYS)) {
